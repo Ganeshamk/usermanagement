@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserElement } from '../models/user.model'
 import { Observable, BehaviorSubject } from 'rxjs'  
- 
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class DataService {
     {userId: 4, userName: "Rajaaa", emailId: 'raj@tapontech.com', phoneNumber: 9483553271, role: 'user', address: "Mysore", url: "wrapo.io"}
   ]
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     localStorage.setItem('users', JSON.stringify(this.users))
   }
 
@@ -81,5 +81,15 @@ export class DataService {
       localStorage.setItem('users', JSON.stringify(users))
       resolve(users)
     })
+  }
+
+  // success message
+  showSuccess(message: any) {
+    this.toastr.success(message)
+  }
+
+  // error message
+  showError(message: any) {
+    this.toastr.error(message)
   }
 }

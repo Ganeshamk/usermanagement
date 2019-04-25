@@ -58,7 +58,7 @@ export class UserComponent implements OnInit {
   updateUser() {
     this.dataService.updateUser(this.userForm.value).then(data => {
       if(data) {
-        alert('Successfully Updated User')
+        this.dataService.showSuccess('Successfully Updated User')
       }
     })
     this.route.navigate(['/users'])
@@ -70,7 +70,7 @@ export class UserComponent implements OnInit {
   
     this.dataService.addUser(this.userForm.value).then(data => {
       if(data) {
-        alert('Successfully Added User')
+        this.dataService.showSuccess('Successfully Added User')
       }
     })
     this.route.navigate(['/users'])

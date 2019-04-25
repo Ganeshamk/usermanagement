@@ -10,7 +10,8 @@
 <div class="col-12">
 
   <mat-form-field class="col-12 p-0">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search here...">
+    <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchText" placeholder="Search here...">
+    <span *ngIf="searchText" class="clear" (click)="clearSearchText()"><i class="fa fa-times pointer" aria-hidden="true"></i></span>
   </mat-form-field>
 
   <table class="table table-striped" *ngIf="usersList.length > 0">

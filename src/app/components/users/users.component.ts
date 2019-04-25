@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
 
   users: any
   usersList: any = []
+  searchText: any
 
   constructor(private dataService: DataService,
     private router: Router) {}
@@ -42,9 +43,16 @@ export class UsersComponent implements OnInit {
 
   /* delete User */
   deleteUser(userId) {
-    this.dataService.deleteUser(userId).then(() => {
-      this.getUSers()
-      alert('User Deleted Successfully')
-    });
+    if(confirm('Are you sure you want delete this user?'))
+      this.dataService.deleteUser(userId).then(() => {
+        this.getUSers()
+        this.dataService.showSuccess('User Deleted Successfully')
+      });
+  }
+
+  /*clear the search text*/
+  clearSearchText() {
+    this.searchText = ''
+    this.getUSers()
   }
 }
