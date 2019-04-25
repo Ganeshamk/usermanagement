@@ -1,0 +1,46 @@
+<div class="col-12 mt-4">
+  <div class="col-12">
+    <label>
+      <h3>Users</h3>
+    </label>
+    <button class="btn btn-primary float-right" [routerLink]="['/user']">Add User</button>
+  </div>
+</div>
+
+<div class="col-12">
+
+  <mat-form-field class="col-12 p-0">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search here...">
+  </mat-form-field>
+
+  <table class="table table-striped" *ngIf="usersList.length > 0">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Role</th>
+        <th>Address</th>
+        <th>Url</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersList">
+        <td>{{user.userName}}</td>
+        <td>{{user.emailId}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.url}}</td>
+        <td class="">
+          <span><i class="fa fa-edit text-success m-2 pointer" title="edit user"
+              [routerLink]="['/user', user.userId]"></i></span>
+          <span (click)="deleteUser(user.userId)"><i class="fa fa-trash text-danger m-2 pointer"
+              title="delete user"></i></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-12 text-center mt-2" *ngIf="!usersList.length > 0">No data avilable</div>
+</div>

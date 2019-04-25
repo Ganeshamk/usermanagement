@@ -1,0 +1,51 @@
+<div class="col-md-6 mx-auto m-3">
+
+  <form class="col-12 user-form" [formGroup]="userForm">
+    <label class="text-primary">
+      <h4 *ngIf="userId">Edit User</h4>
+      <h4 [hidden]="userId">Add User</h4>
+    </label>
+
+    <div class="form-group">
+      <label for="name">User Name<span class="text-danger"><sup>*</sup></span>:</label>
+      <input type="name" class="form-control" formControlName="userName">
+      <app-control-message class="text-center" [title]="'User Name'" [control]="userForm.controls.userName"></app-control-message>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address<span class="text-danger"><sup>*</sup></span>:</label>
+      <input type="email" class="form-control" formControlName="emailId">
+      <app-control-message class="text-center" [title]="'Email Address'" [control]="userForm.controls.emailId"></app-control-message>
+    </div>
+
+    <div class="form-group">
+      <label for="phonr">Phone Number:</label>
+      <input type="number" class="form-control" formControlName="phoneNumber">
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role<span class="text-danger"><sup>*</sup></span>:</label>
+      <select class="form-control" formControlName="role">
+          <option value="" selected>Please select role</option>
+        <option *ngFor="let role of roles" value={{role}}>{{role}}</option>
+      </select>
+      <app-control-message class="text-center" [title]="'Role'" [control]="userForm.controls.role"></app-control-message>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address<span class="text-danger"><sup>*</sup></span>:</label>
+      <textarea class="form-control" rows="3" formControlName="address"></textarea>
+      <app-control-message class="text-center" [title]="'Address'" [control]="userForm.controls.address"></app-control-message>
+    </div>
+
+    <div class="form-group">
+      <span for="url">url:</span>
+      <input type="text" class="form-control" formControlName="url">
+    </div>
+
+    <div class="form-group">
+      <small><span class="text-danger"><sup>*</sup></span>indicates mandatory fields</small>
+      <button type="submit" class="btn btn-primary float-right" [disabled]="!userForm.valid" (click)="userId ? updateUser() : addUser()">{{ userId ? 'Update' : 'Create'}} </button>
+    </div>
+  </form>
+</div>

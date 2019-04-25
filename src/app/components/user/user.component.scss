@@ -1,0 +1,14 @@
+.user-form {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    border: 0;
+    -webkit-border-radius: .125rem;
+    border-radius: 0.125rem;
+    padding: 20px;
+    background: #ffffff;
+    display: table;
+
+    .form-group {
+        margin-bottom: .5rem !important;
+    }
+}
