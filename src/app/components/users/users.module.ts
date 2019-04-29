@@ -5,6 +5,7 @@ import { UsersComponent } from './users.component';
 import { MatInputModule } from '@angular/material/input';
 import { DataService } from '../../services/data.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { OrderByPipe } from '../../pipes/orderBy';
 
 @NgModule({
     imports: [
@@ -15,7 +16,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         FormsModule
     ],
     declarations: [
-        UsersComponent
+        UsersComponent,
+        OrderByPipe
+        
     ],
     providers: [DataService]
 })

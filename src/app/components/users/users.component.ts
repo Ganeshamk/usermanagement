@@ -14,6 +14,8 @@ export class UsersComponent implements OnInit {
   users: any
   usersList: any = []
   searchText: any
+  sortingName: string;
+  isDesc: boolean;
 
   constructor(private dataService: DataService,
     private router: Router) {}
@@ -25,7 +27,10 @@ export class UsersComponent implements OnInit {
   /* filter the table data */
   applyFilter(filterValue: string) {
     this.usersList = this.users.filter((user) => {
-      if(user.userName.toLowerCase().includes(filterValue.toLowerCase())) {
+      if(user.userName.toLowerCase().includes(filterValue.toLowerCase()) 
+      || user.emailId.toLowerCase().includes(filterValue.toLowerCase())
+      || user.role.toLowerCase().includes(filterValue.toLowerCase())
+      || user.address.toLowerCase().includes(filterValue.toLowerCase())) {
         return user
       }
     })
@@ -36,7 +41,8 @@ export class UsersComponent implements OnInit {
     this.dataService.getUsers().then(data => {
       if(data) {
         this.users = data
-        this.usersList = data
+        this.usersList = this.users
+        this.sort('userName')
       }
     })
   }
@@ -54,5 +60,14 @@ export class UsersComponent implements OnInit {
   clearSearchText() {
     this.searchText = ''
     this.getUSers()
+  }
+
+  sort(name) {
+    if (name && this.sortingName !== name) {
+      this.isDesc = false;
+    } else {
+      this.isDesc = !this.isDesc;
+    }
+    this.sortingName = name;
   }
 }
