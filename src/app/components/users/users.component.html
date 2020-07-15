@@ -11,13 +11,15 @@
 
   <mat-form-field class="col-12 p-0">
     <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchText" placeholder="Search here...">
-    <span *ngIf="searchText" class="clear" (click)="clearSearchText()"><i class="fa fa-times pointer" aria-hidden="true"></i></span>
+    <span *ngIf="searchText" class="clear" (click)="clearSearchText()"><i class="fa fa-times pointer"
+        aria-hidden="true"></i></span>
   </mat-form-field>
 
   <table class="table table-striped table-responsive-md" *ngIf="usersList.length > 0">
     <thead>
       <tr>
-        <th>User Name <span class="col-12 pointer" (click)="sort('userName')"><i [ngClass]="isDesc ? 'fa fa-arrow-up' : 'fa fa-arrow-down'"></i></span></th>
+        <th>User Name <span class="col-12 pointer" (click)="sort('userName')"><i
+              [ngClass]="isDesc ? 'fa fa-arrow-up' : 'fa fa-arrow-down'"></i></span></th>
         <th>Email</th>
         <th>Phone Number</th>
         <th>Role</th>
@@ -43,5 +45,5 @@
       </tr>
     </tbody>
   </table>
-  <div class="col-12 text-center mt-2" *ngIf="!usersList.length > 0">No data avilable</div>
+  <div class="col-12 text-center mt-2" *ngIf="usersList.length === 0">No data avilable</div>
 </div>

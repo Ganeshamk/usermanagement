@@ -1,20 +1,21 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { UserComponent } from './user.component'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserComponent } from './user.component';
 import { DataService } from '../../services/data.service';
 import { UserRoutes } from './user.routing';
 import { ValidationService } from '../../services/validator';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ControlMessageComponent } from '../control-message/control-message.component';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
     imports: [UserRoutes,
-        ReactiveFormsModule, 
+        ReactiveFormsModule,
         FormsModule,
+        SharedModule,
         CommonModule
-     ],
-    declarations: [UserComponent, ControlMessageComponent],
+    ],
+    declarations: [UserComponent],
     providers: [DataService, ValidationService]
 })
 
-export class UserModule {}
+export class UserModule { }
